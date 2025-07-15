@@ -63,8 +63,7 @@ python3 payloadforge.py
 ---
 
 ## 📸 Screenshot
-
-![Uploading Screenshot_2025-07-15-14-14-15-390_com.termux~2.jpg…]()
+![Screenshot_2025-07-15-14-14-15-390_com termux~2](https://github.com/user-attachments/assets/ba76d886-dbcf-4996-b9aa-f22d4a18d495)
 
 ---
 
