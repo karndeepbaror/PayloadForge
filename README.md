@@ -64,7 +64,7 @@ python3 payloadforge.py
 
 ## 📸 Screenshot
 
-![screenshot](https://user-images.githubusercontent.com/placeholder-tool-banner.png)
+![Uploading Screenshot_2025-07-15-14-14-15-390_com.termux~2.jpg…]()
 
 ---
 
