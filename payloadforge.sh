@@ -8,6 +8,7 @@
 # Colors
 CYAN="\033[1;36m"
 GREEN="\033[1;32m"
+RED="\033[1;31m"
 RESET="\033[0m"
 
 # CTRL+C Trap
@@ -56,10 +57,34 @@ spin_one_satellite() {
   clear
 }
 
-# Call animation
+# Launch animation
 spin_one_satellite
 
-# Main Interface Placeholder
-echo -e "${CYAN}PayloadForge Loaded.${RESET}"
-echo -e "${CYAN}Use ./modules/ for payloads (xss.txt, sqli.txt, etc.)${RESET}"
-echo -e "${GREEN}Tool by Karndeep Baror | @karndeepbaror 🇮🇳${RESET}"
+# Main Menu
+while true; do
+  echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+  echo -e "${CYAN}  🛰️  PayloadForge – Main Menu${RESET}"
+  echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+  echo -e "${CYAN}[1] XSS Payloads${RESET}"
+  echo -e "${CYAN}[2] SQLi Payloads${RESET}"
+  echo -e "${CYAN}[3] LFI Payloads${RESET}"
+  echo -e "${CYAN}[4] IDOR Payloads${RESET}"
+  echo -e "${CYAN}[5] SSRF Payloads${RESET}"
+  echo -e "${CYAN}[6] Exit${RESET}"
+  echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"
+  read -p "Select Option (1-6): " choice
+
+  case $choice in
+    1) cat modules/xss.txt ;;
+    2) cat modules/sqli.txt ;;
+    3) cat modules/lfi.txt ;;
+    4) cat modules/idor.txt ;;
+    5) cat modules/ssrf.txt ;;
+    6) echo -e "\n${GREEN}Stay Ethical , Hack Strong 🇮🇳  By KK ⌷${RESET}"; exit ;;
+    *) echo -e "${RED}Invalid Option!${RESET}" ;;
+  esac
+
+  echo -e "\nPress enter to return to menu..."
+  read
+  clear
+done
